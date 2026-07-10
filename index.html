@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portal Informasi & Pembagian Kelas - MTs. Muhajirin Surabaya</title>
+    <title>Portal Informasi & Cek Pembagian Kelas - MTs. Muhajirin Surabaya</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Font Awesome Icons -->
@@ -46,6 +46,21 @@
             color: white;
             box-shadow: 0 4px 14px 0 rgba(4, 120, 87, 0.3);
         }
+        /* Custom Scrollbar for Dropdown */
+        .custom-scroll::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scroll::-webkit-scrollbar-track {
+            background: #f1f5f9;
+            border-radius: 10px;
+        }
+        .custom-scroll::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 10px;
+        }
+        .custom-scroll::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
     </style>
 </head>
 <body class="bg-gradient-to-br from-emerald-50 via-teal-50 to-amber-50/40 min-h-screen font-sans text-slate-800 antialiased">
@@ -84,173 +99,93 @@
             
             <div class="relative z-10 max-w-2xl">
                 <span class="bg-accent-400 text-brand-900 font-bold px-3 py-1.5 rounded-full text-xs uppercase tracking-wider">Pusat Informasi Madrasah</span>
-                <h2 class="font-display font-extrabold text-3xl sm:text-4xl mt-3 mb-4 leading-tight">Selamat Datang di Portal Informasi MTs. Muhajirin Surabaya</h2>
+                <h2 class="font-display font-extrabold text-3xl sm:text-4xl mt-3 mb-4 leading-tight">Portal Informasi Resmi & Cek Pembagian Kelas</h2>
                 <p class="text-emerald-100 text-sm sm:text-base leading-relaxed mb-6">
-                    Akses cepat pembagian kelas reguler, kelas BTQ (Baca Tulis Alquran), pengecekan status administrasi daftar ulang, serta jadwal awal masuk sekolah Anda di sini.
+                    Halaman ini dikembangkan khusus sesuai kebijakan madrasah untuk memudahkan wali murid melakukan pengecekan status administrasi daftar ulang, kelengkapan berkas, serta penempatan kelas putra/putri Anda secara langsung dan cepat.
                 </p>
                 <div class="flex flex-wrap gap-3">
                     <a href="https://wa.me/6282337254978" target="_blank" class="inline-flex items-center gap-2 bg-emerald-500 hover:bg-emerald-400 text-white font-bold px-5 py-3 rounded-xl transition duration-300 shadow-md hover:scale-[1.02]">
                         <i class="fa-brands fa-whatsapp text-lg"></i> Hubungi Admin Madrasah
                     </a>
-                    <a href="https://linktr.ee/mts.muhajirinsby" target="_blank" class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 text-white font-medium px-5 py-3 rounded-xl text-sm hover:bg-white/20 transition duration-300">
-                        <i class="fa-solid fa-circle-nodes"></i> Linktree Official
-                    </a>
+                    <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 text-white font-medium px-5 py-3 rounded-xl text-sm">
+                        <i class="fa-solid fa-map-location-dot"></i> Jl. Pogot 5 No. 26, Surabaya
+                    </div>
                 </div>
             </div>
         </div>
 
         <!-- NAVIGATION TABS -->
         <div class="bg-white p-2 rounded-2xl shadow-sm border border-slate-100 mb-8 flex flex-wrap gap-1">
-            <button onclick="switchTab('tab-kelas-sekolah')" id="btn-tab-kelas-sekolah" class="tab-btn flex-1 min-w-[150px] inline-flex items-center justify-center gap-2 py-3 px-4 rounded-xl text-sm font-bold text-slate-600 hover:bg-slate-50 transition duration-200">
-                <i class="fa-solid fa-school text-base"></i> Pembagian Kelas
+            <button onclick="switchTab('tab-cek-pembagian')" id="btn-tab-cek-pembagian" class="tab-btn flex-1 min-w-[200px] inline-flex items-center justify-center gap-2 py-3 px-4 rounded-xl text-sm font-bold text-slate-600 hover:bg-slate-50 transition duration-200">
+                <i class="fa-solid fa-magnifying-glass text-base"></i> Cek Pembagian Kelas
             </button>
-            <button onclick="switchTab('tab-kelas-btq')" id="btn-tab-kelas-btq" class="tab-btn flex-1 min-w-[150px] inline-flex items-center justify-center gap-2 py-3 px-4 rounded-xl text-sm font-bold text-slate-600 hover:bg-slate-50 transition duration-200">
+            <button onclick="switchTab('tab-kelas-btq')" id="btn-tab-kelas-btq" class="tab-btn flex-1 min-w-[200px] inline-flex items-center justify-center gap-2 py-3 px-4 rounded-xl text-sm font-bold text-slate-600 hover:bg-slate-50 transition duration-200">
                 <i class="fa-solid fa-book-quran text-base"></i> Kelas BTQ
             </button>
-            <button onclick="switchTab('tab-daftar-ulang')" id="btn-tab-daftar-ulang" class="tab-btn flex-1 min-w-[150px] inline-flex items-center justify-center gap-2 py-3 px-4 rounded-xl text-sm font-bold text-slate-600 hover:bg-slate-50 transition duration-200">
-                <i class="fa-solid fa-user-check text-base"></i> Cek Daftar Ulang
-            </button>
-            <button onclick="switchTab('tab-jadwal-seragam')" id="btn-tab-jadwal-seragam" class="tab-btn flex-1 min-w-[150px] inline-flex items-center justify-center gap-2 py-3 px-4 rounded-xl text-sm font-bold text-slate-600 hover:bg-slate-50 transition duration-200">
+            <button onclick="switchTab('tab-jadwal-seragam')" id="btn-tab-jadwal-seragam" class="tab-btn flex-1 min-w-[200px] inline-flex items-center justify-center gap-2 py-3 px-4 rounded-xl text-sm font-bold text-slate-600 hover:bg-slate-50 transition duration-200">
                 <i class="fa-solid fa-calendar-days text-base"></i> Jadwal & Seragam
             </button>
         </div>
 
-        <!-- TAB CONTENT: PEMBAGIAN KELAS -->
-        <div id="tab-kelas-sekolah" class="tab-content">
-            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
-                <div>
-                    <h3 class="font-display font-extrabold text-2xl text-slate-800">Daftar Pembagian Kelas Reguler</h3>
-                    <p class="text-sm text-slate-500">Pilih tingkatan kelas di bawah ini untuk melihat daftar nama siswa lengkap.</p>
-                </div>
-                <!-- Mini filter inside tab -->
-                <div class="flex flex-wrap gap-2" id="kelas-sub-tabs">
-                    <button onclick="filterKelasReguler('all')" class="sub-filter-btn px-4 py-2 rounded-lg text-xs font-bold bg-brand-600 text-white shadow-sm" data-target="all">Semua Kelas</button>
-                    <button onclick="filterKelasReguler('vii')" class="sub-filter-btn px-4 py-2 rounded-lg text-xs font-bold bg-white text-slate-600 border border-slate-100 hover:bg-slate-50" data-target="vii">Kelas VII</button>
-                    <button onclick="filterKelasReguler('viii-a')" class="sub-filter-btn px-4 py-2 rounded-lg text-xs font-bold bg-white text-slate-600 border border-slate-100 hover:bg-slate-50" data-target="viii-a">Kelas VIII-A</button>
-                    <button onclick="filterKelasReguler('viii-b')" class="sub-filter-btn px-4 py-2 rounded-lg text-xs font-bold bg-white text-slate-600 border border-slate-100 hover:bg-slate-50" data-target="viii-b">Kelas VIII-B</button>
-                    <button onclick="filterKelasReguler('ix-a')" class="sub-filter-btn px-4 py-2 rounded-lg text-xs font-bold bg-white text-slate-600 border border-slate-100 hover:bg-slate-50" data-target="ix-a">Kelas IX-A</button>
-                    <button onclick="filterKelasReguler('ix-b')" class="sub-filter-btn px-4 py-2 rounded-lg text-xs font-bold bg-white text-slate-600 border border-slate-100 hover:bg-slate-50" data-target="ix-b">Kelas IX-B</button>
-                </div>
-            </div>
-
-            <!-- Grid Layout Kelas -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="container-kelas-reguler">
-                
-                <!-- KELAS VII -->
-                <div class="card-kelas bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition duration-300 overflow-hidden" data-kelas="vii">
-                    <div class="p-5 bg-gradient-to-r from-emerald-600 to-teal-600 text-white">
-                        <div class="flex justify-between items-start">
-                            <div>
-                                <span class="bg-white/20 text-white text-xs font-bold px-2 py-1 rounded">Reguler</span>
-                                <h4 class="font-display font-extrabold text-2xl mt-1">Kelas VII</h4>
-                            </div>
-                            <span class="bg-accent-400 text-brand-900 text-xs font-bold px-2.5 py-1 rounded-full">36 Siswa</span>
-                        </div>
-                        <div class="mt-4 flex items-center gap-2 bg-black/15 px-3 py-2 rounded-lg text-sm">
-                            <i class="fa-solid fa-user-tie text-accent-400"></i>
-                            <div>
-                                <p class="text-[10px] text-emerald-200 uppercase tracking-wider font-semibold">Wali Kelas</p>
-                                <p class="font-bold">Uswatun Hasanah, S.Pd.I</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="p-4 max-h-[350px] overflow-y-auto divide-y divide-slate-50" id="list-kelas-vii">
-                        <!-- Filled by JS -->
-                    </div>
+        <!-- TAB CONTENT: CEK PEMBAGIAN KELAS -->
+        <div id="tab-cek-pembagian" class="tab-content">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-8">
+                    <span class="bg-brand-50 text-brand-700 border border-brand-100 font-bold px-3 py-1.5 rounded-full text-xs uppercase tracking-wider inline-flex items-center gap-1.5">
+                        <i class="fa-solid fa-shield-halved"></i> Data berdasarkan hasil Daftar Ulang 9-10 Juli 2026
+                    </span>
+                    <h3 class="font-display font-extrabold text-3xl text-slate-800 mt-2">Pencarian Pembagian Kelas & Status Siswa</h3>
+                    <p class="text-sm text-slate-500 mt-1">Gunakan kotak pencarian di bawah untuk mencari nama putra/putri Anda. Sistem akan menampilkan status daftar ulang, berkas, administrasi, dan ruang kelas secara real-time.</p>
                 </div>
 
-                <!-- KELAS VIII-A -->
-                <div class="card-kelas bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition duration-300 overflow-hidden" data-kelas="viii-a">
-                    <div class="p-5 bg-gradient-to-r from-emerald-600 to-teal-600 text-white">
-                        <div class="flex justify-between items-start">
-                            <div>
-                                <span class="bg-white/20 text-white text-xs font-bold px-2 py-1 rounded">Reguler</span>
-                                <h4 class="font-display font-extrabold text-2xl mt-1">Kelas VIII-A</h4>
-                            </div>
-                            <span class="bg-accent-400 text-brand-900 text-xs font-bold px-2.5 py-1 rounded-full">21 Siswa</span>
-                        </div>
-                        <div class="mt-4 flex items-center gap-2 bg-black/15 px-3 py-2 rounded-lg text-sm">
-                            <i class="fa-solid fa-user-tie text-accent-400"></i>
-                            <div>
-                                <p class="text-[10px] text-emerald-200 uppercase tracking-wider font-semibold">Wali Kelas</p>
-                                <p class="font-bold">Sri Istiyah, S.Pd</p>
+                <div class="bg-white rounded-3xl p-6 sm:p-8 border border-emerald-100 shadow-xl shadow-emerald-900/5 relative">
+                    <!-- Custom Combobox Search Siswa -->
+                    <label for="search-siswa-input" class="block text-sm font-bold text-slate-700 mb-3 flex items-center gap-2">
+                        <i class="fa-solid fa-user-graduate text-brand-600"></i> Cari Nama Siswa (A-Z):
+                    </label>
+                    
+                    <div class="relative w-full mb-2">
+                        <div class="relative">
+                            <input type="text" id="search-siswa-input" onfocus="showDropdown()" oninput="filterSiswa()" placeholder="Ketik nama lengkap siswa untuk mencari..." class="block w-full rounded-2xl border-2 border-slate-200 bg-slate-50 px-4 py-4 pr-12 text-slate-800 font-semibold focus:border-brand-500 focus:bg-white focus:ring-4 focus:ring-brand-100 outline-none transition duration-200 appearance-none">
+                            <div class="absolute inset-y-0 right-0 flex items-center px-4 text-slate-400 pointer-events-none">
+                                <i class="fa-solid fa-magnifying-glass text-lg"></i>
                             </div>
                         </div>
+                        
+                        <!-- Alphabetical Dropdown List (Names only) -->
+                        <div id="siswa-dropdown-list" class="absolute left-0 right-0 mt-2 max-h-72 overflow-y-auto bg-white border border-slate-200 rounded-2xl shadow-2xl z-30 hidden custom-scroll">
+                            <!-- Items populated and sorted by JS -->
+                        </div>
                     </div>
-                    <div class="p-4 max-h-[350px] overflow-y-auto divide-y divide-slate-50" id="list-kelas-viii-a">
-                        <!-- Filled by JS -->
-                    </div>
-                </div>
+                    <p class="text-xs text-slate-400 italic mb-6">Catatan: Tulis nama secara lengkap atau pilih langsung dari daftar yang muncul.</p>
 
-                <!-- KELAS VIII-B -->
-                <div class="card-kelas bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition duration-300 overflow-hidden" data-kelas="viii-b">
-                    <div class="p-5 bg-gradient-to-r from-emerald-600 to-teal-600 text-white">
-                        <div class="flex justify-between items-start">
-                            <div>
-                                <span class="bg-white/20 text-white text-xs font-bold px-2 py-1 rounded">Reguler</span>
-                                <h4 class="font-display font-extrabold text-2xl mt-1">Kelas VIII-B</h4>
-                            </div>
-                            <span class="bg-accent-400 text-brand-900 text-xs font-bold px-2.5 py-1 rounded-full">21 Siswa</span>
-                        </div>
-                        <div class="mt-4 flex items-center gap-2 bg-black/15 px-3 py-2 rounded-lg text-sm">
-                            <i class="fa-solid fa-user-tie text-accent-400"></i>
-                            <div>
-                                <p class="text-[10px] text-emerald-200 uppercase tracking-wider font-semibold">Wali Kelas</p>
-                                <p class="font-bold">Muflihatul Choiroh, S.Pd.I</p>
-                            </div>
-                        </div>
+                    <!-- DYNAMIC RESULTS VIEW -->
+                    <div id="box-hasil-pembagian" class="hidden transition-all duration-300">
+                        <!-- Will be dynamically injected with Category-Based Color cards -->
                     </div>
-                    <div class="p-4 max-h-[350px] overflow-y-auto divide-y divide-slate-50" id="list-kelas-viii-b">
-                        <!-- Filled by JS -->
-                    </div>
-                </div>
 
-                <!-- KELAS IX-A -->
-                <div class="card-kelas bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition duration-300 overflow-hidden" data-kelas="ix-a">
-                    <div class="p-5 bg-gradient-to-r from-emerald-600 to-teal-600 text-white">
-                        <div class="flex justify-between items-start">
-                            <div>
-                                <span class="bg-white/20 text-white text-xs font-bold px-2 py-1 rounded">Reguler</span>
-                                <h4 class="font-display font-extrabold text-2xl mt-1">Kelas IX-A</h4>
+                    <!-- Panduan Umum Daftar Ulang -->
+                    <div class="mt-10 border-t border-slate-100 pt-8">
+                        <h4 class="font-display font-bold text-slate-800 mb-4 flex items-center gap-2">
+                            <i class="fa-solid fa-circle-info text-emerald-600"></i> Prosedur Umum Daftar Ulang
+                        </h4>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="bg-slate-50 p-4 rounded-2xl border border-slate-100 flex items-start gap-3">
+                                <span class="bg-emerald-600 text-white font-bold w-6 h-6 rounded-full flex items-center justify-center text-xs shrink-0 mt-0.5">1</span>
+                                <p class="text-xs text-slate-600 leading-relaxed">Pastikan tidak memiliki tanggungan administrasi di semester sebelumnya.</p>
                             </div>
-                            <span class="bg-accent-400 text-brand-900 text-xs font-bold px-2.5 py-1 rounded-full">20 Siswa</span>
-                        </div>
-                        <div class="mt-4 flex items-center gap-2 bg-black/15 px-3 py-2 rounded-lg text-sm">
-                            <i class="fa-solid fa-user-tie text-accent-400"></i>
-                            <div>
-                                <p class="text-[10px] text-emerald-200 uppercase tracking-wider font-semibold">Wali Kelas</p>
-                                <p class="font-bold">Nur Sahit, S.Pd</p>
+                            <div class="bg-slate-50 p-4 rounded-2xl border border-slate-100 flex items-start gap-3">
+                                <span class="bg-emerald-600 text-white font-bold w-6 h-6 rounded-full flex items-center justify-center text-xs shrink-0 mt-0.5">2</span>
+                                <p class="text-xs text-slate-600 leading-relaxed">Telah melakukan pengambilan rapor yang ditandatangani oleh Wali Kelas dan Kepala Madrasah.</p>
+                            </div>
+                            <div class="bg-slate-50 p-4 rounded-2xl border border-slate-100 flex items-start gap-3 md:col-span-2">
+                                <span class="bg-emerald-600 text-white font-bold w-6 h-6 rounded-full flex items-center justify-center text-xs shrink-0 mt-0.5">3</span>
+                                <p class="text-xs text-slate-600 leading-relaxed"><strong>Melakukan daftar ulang dengan menyerahkan berkas dan biaya administrasi ke Bendahara Sekolah.</strong></p>
                             </div>
                         </div>
                     </div>
-                    <div class="p-4 max-h-[350px] overflow-y-auto divide-y divide-slate-50" id="list-kelas-ix-a">
-                        <!-- Filled by JS -->
-                    </div>
-                </div>
 
-                <!-- KELAS IX-B -->
-                <div class="card-kelas bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition duration-300 overflow-hidden" data-kelas="ix-b">
-                    <div class="p-5 bg-gradient-to-r from-emerald-600 to-teal-600 text-white">
-                        <div class="flex justify-between items-start">
-                            <div>
-                                <span class="bg-white/20 text-white text-xs font-bold px-2 py-1 rounded">Reguler</span>
-                                <h4 class="font-display font-extrabold text-2xl mt-1">Kelas IX-B</h4>
-                            </div>
-                            <span class="bg-accent-400 text-brand-900 text-xs font-bold px-2.5 py-1 rounded-full">21 Siswa</span>
-                        </div>
-                        <div class="mt-4 flex items-center gap-2 bg-black/15 px-3 py-2 rounded-lg text-sm">
-                            <i class="fa-solid fa-user-tie text-accent-400"></i>
-                            <div>
-                                <p class="text-[10px] text-emerald-200 uppercase tracking-wider font-semibold">Wali Kelas</p>
-                                <p class="font-bold">Nurul Maghfiroh, S.Si</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="p-4 max-h-[350px] overflow-y-auto divide-y divide-slate-50" id="list-kelas-ix-b">
-                        <!-- Filled by JS -->
-                    </div>
                 </div>
-
             </div>
         </div>
 
@@ -258,7 +193,7 @@
         <div id="tab-kelas-btq" class="tab-content hidden">
             <div class="mb-6">
                 <h3 class="font-display font-extrabold text-2xl text-slate-800">Penempatan Kelas BTQ</h3>
-                <p class="text-sm text-slate-500">Program wajib Baca Tulis Alquran (BTQ) yang dikelompokkan berdasarkan tingkatan kemampuan.</p>
+                <p class="text-sm text-slate-500">Program wajib Baca Tulis Alquran (BTQ) yang dikelompokkan berdasarkan tingkatan kemampuan siswa.</p>
             </div>
 
             <!-- Grid Layout BTQ -->
@@ -282,7 +217,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="p-4 max-h-[350px] overflow-y-auto divide-y divide-slate-50" id="list-btq-1">
+                    <div class="p-4 max-h-[350px] overflow-y-auto divide-y divide-slate-50 custom-scroll" id="list-btq-1">
                         <!-- Filled by JS -->
                     </div>
                 </div>
@@ -305,7 +240,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="p-4 max-h-[350px] overflow-y-auto divide-y divide-slate-50" id="list-btq-2">
+                    <div class="p-4 max-h-[350px] overflow-y-auto divide-y divide-slate-50 custom-scroll" id="list-btq-2">
                         <!-- Filled by JS -->
                     </div>
                 </div>
@@ -328,87 +263,11 @@
                             </div>
                         </div>
                     </div>
-                    <div class="p-4 max-h-[350px] overflow-y-auto divide-y divide-slate-50" id="list-btq-3">
+                    <div class="p-4 max-h-[350px] overflow-y-auto divide-y divide-slate-50 custom-scroll" id="list-btq-3">
                         <!-- Filled by JS -->
                     </div>
                 </div>
 
-            </div>
-        </div>
-
-        <!-- TAB CONTENT: DAFTAR ULANG -->
-        <div id="tab-daftar-ulang" class="tab-content hidden">
-            <div class="max-w-3xl mx-auto">
-                <div class="text-center mb-8">
-                    <span class="bg-rose-50 text-rose-600 border border-rose-100 font-bold px-3 py-1.5 rounded-full text-xs uppercase tracking-wider inline-flex items-center gap-1.5">
-                        <i class="fa-solid fa-circle-exclamation animate-pulse"></i> Penting & Segera
-                    </span>
-                    <h3 class="font-display font-extrabold text-3xl text-slate-800 mt-2">Pengecekan Status Daftar Ulang</h3>
-                    <p class="text-sm text-slate-500 mt-1">Bagi wali murid, silakan pilih nama putra/putri Anda dari menu pilihan untuk memeriksa kelengkapan syarat daftar ulang.</p>
-                </div>
-
-                <div class="bg-white rounded-3xl p-6 sm:p-8 border border-emerald-100 shadow-lg shadow-emerald-900/5">
-                    <label for="pilih-siswa" class="block text-sm font-bold text-slate-700 mb-3 flex items-center gap-2">
-                        <i class="fa-solid fa-user-graduate text-brand-600"></i> Pilih Nama Siswa:
-                    </label>
-                    <div class="relative">
-                        <select id="pilih-siswa" onchange="tampilkanKeteranganSiswa()" class="block w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-4 pr-10 text-slate-800 font-semibold focus:border-brand-500 focus:bg-white focus:ring-4 focus:ring-brand-100 outline-none transition duration-200 appearance-none cursor-pointer">
-                            <option value="">-- Silakan Pilih Nama Siswa di Sini --</option>
-                            <!-- List diisi oleh JS -->
-                        </select>
-                        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-slate-500">
-                            <i class="fa-solid fa-chevron-down"></i>
-                        </div>
-                    </div>
-
-                    <!-- Keterangan Status Box (Dinamis) -->
-                    <div id="box-keterangan-daftarulang" class="mt-8 hidden transition-all duration-300">
-                        <div class="p-1 rounded-2xl bg-gradient-to-br from-amber-500 to-orange-500">
-                            <div class="bg-white rounded-[14px] p-5 sm:p-7">
-                                <div class="flex items-start gap-4">
-                                    <div class="p-3 bg-amber-50 text-amber-600 rounded-xl flex items-center justify-center">
-                                        <i class="fa-solid fa-file-invoice-dollar text-2xl"></i>
-                                    </div>
-                                    <div class="flex-1">
-                                        <h4 class="font-display font-extrabold text-xl text-slate-800" id="detail-nama-siswa">Aldo Putra Alfaredo</h4>
-                                        <span id="badge-status" class="inline-block bg-amber-100 text-amber-800 text-xs font-bold px-2.5 py-1 rounded-md mt-1">Belum Daftar Ulang</span>
-                                    </div>
-                                </div>
-
-                                <div class="mt-6 border-t border-slate-100 pt-6">
-                                    <p class="text-xs font-extrabold text-slate-400 uppercase tracking-wider mb-3">Kewajiban / Alasan Belum Terpenuhi:</p>
-                                    <ul class="space-y-3" id="detail-alasan-list">
-                                        <!-- Ditambah dinamis -->
-                                    </ul>
-                                </div>
-
-                                <div class="mt-6 bg-amber-50/50 rounded-xl p-4 border border-amber-100/50 text-amber-900 text-sm leading-relaxed" id="detail-pesan-tindakan">
-                                    <!-- Dinamis -->
-                                </div>
-
-                                <div class="mt-8 flex flex-col sm:flex-row gap-3">
-                                    <a id="btn-wa-admin" href="#" target="_blank" class="flex-1 inline-flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20ba56] text-white font-bold py-3.5 px-6 rounded-xl transition duration-300 shadow-md">
-                                        <i class="fa-brands fa-whatsapp text-lg"></i> Hubungi Admin (Konfirmasi WA)
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Panduan Umum Daftar Ulang -->
-                    <div class="mt-8 border-t border-slate-100 pt-8">
-                        <h4 class="font-display font-bold text-slate-800 mb-3 flex items-center gap-2">
-                            <i class="fa-solid fa-circle-info text-blue-500"></i> Prosedur Umum Daftar Ulang
-                        </h4>
-                        <ol class="space-y-2 text-sm text-slate-600 list-decimal pl-4">
-                            <li>Pastikan tidak memiliki tanggungan administrasi di semester sebelumnya.</li>
-                            <li>Telah melakukan pengambilan rapor yang ditandatangani oleh Wali Kelas dan Kepala Madrasah.</li>
-                            <li>Melakukan daftar ulang dengan menyerahkan berkas dan biaya administrasi ke Bendahara Sekolah</li>
-                            <li>Jika terdapat kendala, langsung konsultasikan ke nomor Admin WA resmi madrasah.</li>
-                        </ol>
-                    </div>
-
-                </div>
             </div>
         </div>
 
@@ -473,7 +332,7 @@
                                     </li>
                                     <li class="flex items-start gap-2">
                                         <i class="fa-solid fa-chevron-right text-emerald-500 text-xs mt-1"></i>
-                                        <span>Didampingi oleh seluruh Tim OSIM serta siswa/i kelas 8 & 9 yang bertugas saat kegiatan</span>
+                                        <span>Didampingi oleh seluruh Tim OSIM serta siswa/i kelas 8 & 9 yang bertugas saat kegiatan.</span>
                                     </li>
                                 </ul>
                             </div>
@@ -519,7 +378,7 @@
                             </div>
                         </div>
 
-                        <!-- Grid Seragam -->
+                        <!-- Grid Seragam (Updated: info menyusul) -->
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             
                             <!-- Senin & Selasa -->
@@ -529,10 +388,7 @@
                                 </span>
                                 <div>
                                     <h4 class="font-bold text-sm text-slate-800">Hari Senin & Selasa</h4>
-                                    <p class="text-xs text-brand-700 font-semibold mt-0.5">Seragam Olahraga</p>
-                                    <p class="text-[11px] text-slate-500 mt-1 flex items-center gap-1">
-                                        <i class="fa-solid fa-socks"></i> Kaos Kaki Abu-Abu
-                                    </p>
+                                    <p class="text-xs text-rose-600 font-semibold mt-0.5 italic">(info menyusul)</p>
                                 </div>
                             </div>
 
@@ -543,10 +399,7 @@
                                 </span>
                                 <div>
                                     <h4 class="font-bold text-sm text-slate-800">Hari Rabu & Kamis</h4>
-                                    <p class="text-xs text-brand-700 font-semibold mt-0.5">Seragam Putih Biru</p>
-                                    <p class="text-[11px] text-slate-500 mt-1 flex items-center gap-1">
-                                        <i class="fa-solid fa-socks"></i> Kaos Kaki Putih
-                                    </p>
+                                    <p class="text-xs text-rose-600 font-semibold mt-0.5 italic">(info menyusul)</p>
                                 </div>
                             </div>
 
@@ -557,10 +410,7 @@
                                 </span>
                                 <div>
                                     <h4 class="font-bold text-sm text-slate-800">Hari Jumat</h4>
-                                    <p class="text-xs text-brand-700 font-semibold mt-0.5">Seragam Pramuka Lengkap</p>
-                                    <p class="text-[11px] text-slate-500 mt-1 flex items-center gap-1">
-                                        <i class="fa-solid fa-socks"></i> Kaos Kaki Hitam
-                                    </p>
+                                    <p class="text-xs text-rose-600 font-semibold mt-0.5 italic">(info menyusul)</p>
                                 </div>
                             </div>
 
@@ -571,10 +421,7 @@
                                 </span>
                                 <div>
                                     <h4 class="font-bold text-sm text-slate-800">Hari Sabtu</h4>
-                                    <p class="text-xs text-brand-700 font-semibold mt-0.5">Batik Bawahan Pramuka</p>
-                                    <p class="text-[11px] text-slate-500 mt-1 flex items-center gap-1">
-                                        <i class="fa-solid fa-socks"></i> Kaos Kaki Hitam
-                                    </p>
+                                    <p class="text-xs text-rose-600 font-semibold mt-0.5 italic">(info menyusul)</p>
                                 </div>
                             </div>
 
@@ -582,11 +429,17 @@
                     </div>
 
                     <!-- Note bawah -->
-                    <div class="mt-6 bg-amber-50 rounded-2xl p-4 border border-amber-100 flex items-start gap-3">
-                        <i class="fa-solid fa-circle-exclamation text-amber-600 text-lg mt-0.5"></i>
-                        <p class="text-xs text-amber-800 leading-relaxed">
-                            <strong>Catatan:</strong> Bagi siswa baru kelas VII yang seragam madrasahnya belum selesai dijahit/didistribusikan, harap tetap menggunakan pakaian seragam asal sekolah SD/MI dengan rapi dan sopan sampai ada pemberitahuan lebih lanjut.
-                        </p>
+                    <div class="mt-6 bg-amber-50 rounded-2xl p-5 border border-amber-100 flex flex-col gap-3">
+                        <div class="flex items-start gap-3">
+                            <i class="fa-solid fa-circle-exclamation text-amber-600 text-lg mt-0.5"></i>
+                            <p class="text-sm font-bold text-amber-900 leading-relaxed">
+                                Catatan Penting Seragam:
+                            </p>
+                        </div>
+                        <ul class="list-disc pl-8 text-xs text-amber-800 space-y-1.5 font-medium">
+                            <li><strong>Siswa/i sudah harus memasang Bed pada setiap seragam.</strong></li>
+                            <li>Bagi siswa baru kelas VII yang seragam madrasahnya belum selesai dijahit/didistribusikan, harap tetap menggunakan pakaian seragam asal sekolah SD/MI dengan rapi dan sopan sampai ada pemberitahuan lebih lanjut.</li>
+                        </ul>
                     </div>
 
                 </div>
@@ -647,9 +500,8 @@
                 <div class="space-y-3">
                     <h4 class="font-bold text-white text-sm uppercase tracking-wider">Akses Cepat Informasi</h4>
                     <div class="grid grid-cols-2 gap-2 text-sm">
-                        <button onclick="switchTab('tab-kelas-sekolah')" class="text-left hover:text-white transition duration-150">Pembagian Kelas</button>
+                        <button onclick="switchTab('tab-cek-pembagian')" class="text-left hover:text-white transition duration-150">Cek Pembagian Kelas</button>
                         <button onclick="switchTab('tab-kelas-btq')" class="text-left hover:text-white transition duration-150">Kelas BTQ</button>
-                        <button onclick="switchTab('tab-daftar-ulang')" class="text-left hover:text-white transition duration-150">Cek Daftar Ulang</button>
                         <button onclick="switchTab('tab-jadwal-seragam')" class="text-left hover:text-white transition duration-150">Info Sekolah</button>
                     </div>
                     <div class="pt-2">
@@ -662,209 +514,176 @@
             </div>
 
             <div class="border-t border-slate-800 mt-10 pt-6 text-center text-xs">
-                <p>&copy; 2026 MTs. Muhajirin Surabaya. All rights reserved. Dikembangkan oleh Nurul Maghfiroh, S.Si.</p>
+                <p>&copy; 2026 MTs. Muhajirin Surabaya. All rights reserved. Dikembangkan oleh <strong>Nurul Maghfiroh, S.Si</strong>.</p>
             </div>
         </div>
     </footer>
 
     <!-- JAVASCRIPT LOGIC -->
     <script>
-        // Database Siswa Kelas Reguler
-        const dataSiswa = {
-            vii: {
-                wali: "Uswatun Hasanah, S.Pd.I",
-                list: Array.from({length: 36}, (_, i) => `Dummy ${i + 1}`)
-            },
-            viiiA: {
-                wali: "Sri Istiyah, S.Pd",
-                totalCapacity: 21,
-                list: [
-                    "ACHMAD UBAIDILLAH ZAIN", "AHMAD HAMDANI", "ALAIKASSALAM", "ANIS ZAHRA", 
-                    "BAGUS ADI SEPTIAWAN", "DAFFA MAULANA IBRAHIM", "DILALATUS SHIFAUL AMALIA", 
-                    "FARID ALFIANSYAH", "ISMAIL", "JULYO RAY SETYAWAN PUTRA", "LAYLATUL LABIBA", 
-                    "MOCH HABIBI ARDANSYAH", "MUHAMMAD JAKARIAH", "MUHAMMAD SOFYAN", 
-                    "AHMAD ZAKI MUBAROK", "NEYSA DWIYANTI", "PUTRA ANDIKA PRATAMA", 
-                    "SHOFIATUL AMALIA", "TAHIRA", "ZASKIA DIAN AGUSTINA"
-                ] // 20 siswa, sisa index ke-21 kosong
-            },
-            viiiB: {
-                wali: "Muflihatul Choiroh, S.Pd.I",
-                totalCapacity: 21,
-                list: [
-                    "ADINDA EVHEYLN IVA NOVA", "AINUR RAFIQ", "ANANDA PRATAMA RAMADHANI", 
-                    "DEVANDRA ERZA GIZELA", "FERNANDO ADITYA DEWA", "IMAM GUFRONI", 
-                    "IMELIA LAILATUL NINDIA SAFIRA PUTRI RAHMA DHANI", "LABITA SHAIKHA ANGELIA", 
-                    "MOH. RAFIQ APRILIO", "MOCH. FIQRI HAIKAL", "MUHAMMAD ARDHI WANSYA", 
-                    "MUHAMMAD ESA ALDIANSYAH", "NAILUL AMANI", "NESA AULIA RAMADANI", 
-                    "RHOHMATUL WAGINA", "ROBI", "SAMANTA"
-                ] // 17 siswa, sisa dikosongkan sampai 21
-            },
-            ixA: {
-                wali: "Nur Sahit, S.Pd",
-                totalCapacity: 20,
-                list: [
-                    "AHMAD FARHAN", "ANGGUN PUSPITA SARI", "AULIA ANJAR ROHMAH", 
-                    "AZKA APRIYANSYAH", "DAVIAN AZHARIL AZIS", "FARHATUL MUNAWWAROH", 
-                    "INAYATUL KHUMAIROH", "MANZILATUL ALIYAH", "MOCH. FARHAN DWI PUTRA", 
-                    "MOCH. FIRMAN", "MUHAMMAT FARUQ", "QUROTUL AINI", "RAHMAT SATRIO", 
-                    "RIZKY TIRTHA AKBAR ARDIANSYAH", "SYA'IF FIRMANSYAH", "VINDI NELA ARHAKI", 
-                    "ZAM ZAMI", "ZUBAIDATUS ZAHRANI"
-                ] // 18 siswa, sisa dikosongkan sampai 20
-            },
-            ixB: {
-                wali: "Nurul Maghfiroh, S.Si",
-                totalCapacity: 21,
-                list: [
-                    "ALDIYANSAH PUTRA PRATAMA", "ALINDA", "ALVIAN MAULANA PALLEVI", 
-                    "ANDHIKA MARVA REY ZEKI", "ANUGRAH SEFTI", "DIMAS SAMUDRA", "ELISA", 
-                    "ACHSAN FAHRIL ALLAM", "FARAH DHIBA AULIA", "FRIZHAM AULYA FAHLEVI", 
-                    "INTAN PRAMESWARI ALICIA PRIYANDA", "MOCH. ABID AQILA PRANAJA", 
-                    "NAJLA KHALISA AZAHRA", "NASELA WULANDARI", "RAKA ADITIA PRATAMA", 
-                    "RINA AGUS DEVIA", "ROBI ISMAIL", "SATRIYA FEBRIANSA", 
-                    "TANIA AYUNI WIYOTO", "YERVAN ANDRIAN", "ZIHAN QURROTUL AINI"
-                ] // Pas 21 siswa
-            }
-        };
-
-        // Database BTQ
-        const dataBtq = {
-            btq1: {
-                list: Array.from({length: 40}, (_, i) => `Siswa ${i + 1}`)
-            },
-            btq2: {
-                list: Array.from({length: 40}, (_, i) => `Murid ${i + 1}`)
-            },
-            btq3: {
-                list: Array.from({length: 40}, (_, i) => `Student ${i + 1}`)
-            }
-        };
-
-        // Database Detail Daftar Ulang Bermasalah
-        const listSiswaBermasalah = [
-            {
-                nama: "Aldo Putra Alfaredo",
-                alasan: [
-                    "Belum menyelesaikan administrasi pendidikan kelas 7 semester genap 2025-2026",
-                    "Belum melaksanakan ujian SAT (Sumatif Akhir Tahun)",
-                    "Belum melakukan pengambilan rapor kelas 7 semester genap 2025-2026"
-                ],
-                solusi: "Dapat melakukan daftar ulang jika telah menunaikan kewajiban-kewajiban diatas. Harap segera ditunaikan agar proses KBM dapat berjalan dengan baik."
-            },
-            {
-                nama: "Afika Ruby Pratiwi",
-                alasan: [
-                    "Belum menyelesaikan administrasi pendidikan kelas 7 semester genap 2025-2026",
-                    "Belum melaksanakan ujian SAT (Sumatif Akhir Tahun)",
-                    "Belum melakukan pengambilan rapor kelas 7 semester genap 2025-2026"
-                ],
-                solusi: "Dapat melakukan daftar ulang jika telah menunaikan kewajiban-kewajiban diatas. Harap segera ditunaikan agar proses KBM dapat berjalan dengan baik."
-            },
-            {
-                nama: "Dzeko Atha Busyr",
-                alasan: [
-                    "Belum menyelesaikan administrasi pendidikan kelas 7 semester genap 2025-2026",
-                    "Belum melaksanakan ujian SAT (Sumatif Akhir Tahun)",
-                    "Belum melakukan pengambilan rapor kelas 7 semester genap 2025-2026"
-                ],
-                solusi: "Dapat melakukan daftar ulang jika telah menunaikan kewajiban-kewajiban diatas. Harap segera ditunaikan agar proses KBM dapat berjalan dengan baik."
-            },
-            {
-                nama: "Ega Maulana",
-                alasan: [
-                    "Belum menyelesaikan administrasi pendidikan kelas 7 semester genap 2025-2026",
-                    "Belum melaksanakan ujian SAT (Sumatif Akhir Tahun)",
-                    "Belum melakukan pengambilan rapor kelas 7 semester genap 2025-2026"
-                ],
-                solusi: "Dapat melakukan daftar ulang jika telah menunaikan kewajiban-kewajiban diatas. Harap segera ditunaikan agar proses KBM dapat berjalan dengan baik."
-            },
-            {
-                nama: "Tio Hermansyah",
-                alasan: [
-                    "Belum menyelesaikan administrasi pendidikan kelas 7 semester genap 2025-2026",
-                    "Belum melaksanakan ujian SAT (Sumatif Akhir Tahun)",
-                    "Belum melakukan pengambilan rapor kelas 7 semester genap 2025-2026"
-                ],
-                solusi: "Dapat melakukan daftar ulang jika telah menunaikan kewajiban-kewajiban diatas. Harap segera ditunaikan agar proses KBM dapat berjalan dengan baik."
-            },
-            {
-                nama: "Moh. Gaffal",
-                alasan: [
-                    "Belum menyelesaikan administrasi pendidikan kelas 7 semester genap 2025-2026",
-                    "Belum melaksanakan ujian SAT (Sumatif Akhir Tahun)",
-                    "Belum melakukan pengambilan rapor kelas 7 semester genap 2025-2026"
-                ],
-                solusi: "Dapat melakukan daftar ulang jika telah menunaikan kewajiban-kewajiban diatas. Harap segera ditunaikan agar proses KBM dapat berjalan dengan baik."
-            },
-            {
-                nama: "Moch. Rizki Romadhon",
-                alasan: [
-                    "Belum melakukan pengambilan rapor kelas 7 semester genap 2025-2026"
-                ],
-                solusi: "Diharapkan wali murid segera menjumpai wali kelas terkait di madrasah untuk mengambil rapor agar proses daftar ulang tidak terhambat."
-            },
-            {
-                nama: "Ronaldowati",
-                alasan: [
-                    "Belum melakukan daftar ulang"
-                ],
-                solusi: "Harap segera melakukan daftar ulang dengan batas tgl 15 Juli 2026. Info lengkap daftar ulang dapat menghubungi Admin Madrasah."
-            }
+        // Full Alphabetical Database of 135 Students (109 transcribed from UPDATE DATA SISWA (Pembagian Kelas).xlsx + 26 Class VII)
+        const databaseSiswa = [
+            { nama: "ACHMAD UBAIDILLAH ZAIN", status: "Sudah", berkas: "Lengkap", adm: "Lunas", kelas: "VIII-A" },
+            { nama: "AHMAD HAMDANI", status: "Sudah", berkas: "Lengkap", adm: "Lunas", kelas: "VIII-A" },
+            { nama: "ALAIKASSALAM", status: "Belum", berkas: "", adm: "", kelas: "" },
+            { nama: "ALDO PUTRA ALFAREDO", status: "Tidak dapat melakukan daftar ulang, sebab belum mengambil rapor Kelas 7 Semester Genap", berkas: "", adm: "", kelas: "" },
+            { nama: "ANIS ZAHRA", status: "Sudah", berkas: "Lengkap", adm: "Lunas", kelas: "VIII-A" },
+            { nama: "BAGUS ADI SEPTIAWAN", status: "Sudah", berkas: "Lengkap", adm: "Lunas", kelas: "VIII-A" },
+            { nama: "DAFFA MAULANA IBRAHIM", status: "Sudah", berkas: "Lengkap", adm: "Lunas", kelas: "VIII-A" },
+            { nama: "DILALATUS SHIFAUL AMALIA", status: "Sudah", berkas: "Lengkap", adm: "Lunas", kelas: "VIII-A" },
+            { nama: "FARID ALFIANSYAH", status: "Sudah", berkas: "Lengkap", adm: "Lunas", kelas: "VIII-A" },
+            { nama: "ISMAIL", status: "Sudah", berkas: "Lengkap", adm: "Lunas", kelas: "VIII-A" },
+            { nama: "JULYO RAY SETYAWAN PUTRA", status: "Sudah", berkas: "Lengkap", adm: "Lunas", kelas: "VIII-A" },
+            { nama: "LAYLATUL LABIBA", status: "Belum", berkas: "", adm: "", kelas: "" },
+            { nama: "MOCH HABIBI ARDANSYAH", status: "Belum", berkas: "", adm: "", kelas: "" },
+            { nama: "MUHAMMAD JAKARIAH", status: "Sudah", berkas: "Fotocopy Ijazah SD/MI Berlegalisir, Fotocopy KK", adm: "Sudah mengangsur", kelas: "Harap menuntaskan daftar ulang dengan batas 16 Juli 2026" },
+            { nama: "MUHAMMAD SOFYAN", status: "Belum", berkas: "", adm: "", kelas: "" },
+            { nama: "AHMAD ZAKI MUBAROK", status: "Sudah", berkas: "Rapor MTs, Fotocopy Ijazah SD/MI Berlegalisir", adm: "Lunas", kelas: "Harap menuntaskan daftar ulang dengan batas 16 Juli 2026" },
+            { nama: "NEYSA DWIYANTI", status: "Sudah", berkas: "Lengkap", adm: "Lunas", kelas: "VIII-A" },
+            { nama: "PUTRA ANDIKA PRATAMA", status: "Sudah", berkas: "Lengkap", adm: "Lunas", kelas: "VIII-A" },
+            { nama: "SHOFIATUL AMALIA", status: "Belum", berkas: "", adm: "", kelas: "" },
+            { nama: "TAHIRA", status: "Sudah", berkas: "Fotocopy Ijazah SD/MI berlegalisir", adm: "Belum melakukan angsuran", kelas: "Harap menuntaskan daftar ulang dengan batas 16 Juli 2026" },
+            { nama: "ZASKIA DIAN AGUSTINA", status: "Sudah", berkas: "Lengkap", adm: "Lunas", kelas: "VIII-A" },
+            { nama: "ADINDA EVHEYLN IVA NOVA", status: "Belum", berkas: "", adm: "", kelas: "" },
+            { nama: "AFIKA RUBY PRATIWI", status: "Tidak dapat melakukan daftar ulang, sebab belum mengambil rapor Kelas 7 Semester Genap", berkas: "", adm: "", kelas: "" },
+            { nama: "AINUR RAFIQ", status: "Sudah", berkas: "Rapor MTs, Fotocopy Ijazah SD/MI Berlegalisir", adm: "Lunas", kelas: "Harap menuntaskan daftar ulang dengan batas 16 Juli 2026" },
+            { nama: "ANANDA PRATAMA RAMADHANI", status: "Belum", berkas: "", adm: "", kelas: "" },
+            { nama: "DEVANDRA ERZA GIZELA", status: "Belum", berkas: "", adm: "", kelas: "" },
+            { nama: "DZEKO ATHA BUSYR", status: "Tidak dapat melakukan daftar ulang, sebab belum mengambil rapor Kelas 7 Semester Genap", berkas: "", adm: "", kelas: "" },
+            { nama: "EGA MAULANA", status: "Tidak dapat melakukan daftar ulang, sebab belum mengambil rapor Kelas 7 Semester Genap", berkas: "", adm: "", kelas: "" },
+            { nama: "FERNANDO ADITYA DEWA", status: "Belum", berkas: "", adm: "", kelas: "" },
+            { nama: "IMAM GUFRONI", status: "Belum", berkas: "", adm: "", kelas: "" },
+            { nama: "MELIA LAILATUL NINDIA SAFIRA PUTRI RAHMA DHANI", status: "Belum", berkas: "", adm: "", kelas: "" },
+            { nama: "LABITA SHAIKHA ANGELIA", status: "Sudah", berkas: "Lengkap", adm: "Lunas", kelas: "VIII-B" },
+            { nama: "MOH. RAFIQ APRILIO", status: "Sudah", berkas: "Fotocopy Ijazah SD/MI Berlegalisir", adm: "Lunas", kelas: "Harap menuntaskan daftar ulang dengan batas 16 Juli 2026" },
+            { nama: "MOCH. FIQRI HAIKAL", status: "Sudah", berkas: "Lengkap", adm: "Lunas", kelas: "VIII-B" },
+            { nama: "MUHAMMAD ARDHI WANSYA", status: "Belum", berkas: "", adm: "", kelas: "" },
+            { nama: "MUHAMMAD ESA ALDIANSYAH", status: "Belum", berkas: "", adm: "", kelas: "" },
+            { nama: "NAILUL AMANI", status: "Sudah", berkas: "Lengkap", adm: "Sudah mengangsur", kelas: "VIII-B" },
+            { nama: "NESA AULIA RAMADANI", status: "Sudah", berkas: "Lengkap", adm: "Sudah mengangsur", kelas: "VIII-B" },
+            { nama: "RHOHMATUL WAGINA", status: "Sudah", berkas: "Rapor MTs", adm: "Lunas", kelas: "Harap menuntaskan daftar ulang dengan batas 16 Juli 2026" },
+            { nama: "ROBI", status: "Sudah", berkas: "Lengkap", adm: "Lunas", kelas: "VIII-B" },
+            { nama: "SAMANTA", status: "Belum", berkas: "", adm: "", kelas: "" },
+            { nama: "TIO HERMANSYAH", status: "Tidak dapat melakukan daftar ulang, sebab belum mengambil rapor Kelas 7 Semester Genap", berkas: "", adm: "", kelas: "" },
+            { nama: "AHMAD FARHAN", status: "Belum", berkas: "", adm: "", kelas: "" },
+            { nama: "ANGGUN PUSPITA SARI", status: "Sudah", berkas: "Lengkap", adm: "Sudah mengangsur", kelas: "IX-A" },
+            { nama: "AULIA ANJAR ROHMAH", status: "Belum", berkas: "", adm: "", kelas: "" },
+            { nama: "AZKA APRIYANSYAH", status: "Belum", berkas: "", adm: "", kelas: "" },
+            { nama: "DAVIAN AZHARIL AZIS", status: "Sudah", berkas: "Lengkap", adm: "Sudah mengangsur", kelas: "IX-A" },
+            { nama: "FARHATUL MUNAWWAROH", status: "Belum", berkas: "", adm: "", kelas: "" },
+            { nama: "INAYATUL KHUMAIROH", status: "Sudah", berkas: "Lengkap", adm: "Lunas", kelas: "IX-A" },
+            { nama: "MANZILATUL ALIYAH", status: "Sudah", berkas: "Lengkap", adm: "Lunas", kelas: "IX-A" },
+            { nama: "MOCH. FARHAN DWI PUTRA", status: "Sudah", berkas: "Lengkap", adm: "Lunas", kelas: "IX-A" },
+            { nama: "MOCH. FIRMAN", status: "Sudah", berkas: "Lengkap", adm: "Lunas", kelas: "IX-A" },
+            { nama: "MOCH. RIZKI ROMADHON", status: "Tidak dapat melakukan daftar ulang, sebab belum mengambil rapor Kelas 7 Semester Genap", berkas: "", adm: "", kelas: "" },
+            { nama: "MOH. GAFFAL", status: "Tidak dapat melakukan daftar ulang, sebab belum mengambil rapor Kelas 7 Semester Genap", berkas: "", adm: "", kelas: "" },
+            { nama: "MUHAMMAT FARUQ", status: "Belum", berkas: "", adm: "", kelas: "" },
+            { nama: "QUROTUL AINI", status: "Sudah", berkas: "Lengkap", adm: "Sudah mengangsur", kelas: "IX-A" },
+            { nama: "RAHMAT SATRIO", status: "Sudah", berkas: "Lengkap", adm: "Lunas", kelas: "IX-A" },
+            { nama: "RIZKY TIRTHA AKBAR ARDIANSYAH", status: "Sudah", berkas: "Lengkap", adm: "Lunas", kelas: "IX-A" },
+            { nama: "SYA'IF FIRMANSYAH", status: "Sudah", berkas: "Lengkap", adm: "Sudah mengangsur", kelas: "IX-A" },
+            { nama: "VINDI NELA ARHAKI", status: "Sudah", berkas: "Lengkap", adm: "Lunas", kelas: "IX-A" },
+            { nama: "ZAM ZAMI", status: "Sudah", berkas: "Fotocopy Ijazah SD/MI Berlegalisir", adm: "Sudah mengangsur", kelas: "Harap menuntaskan daftar ulang dengan batas 16 Juli 2026" },
+            { nama: "ZUBAIDATUS ZAHRANI", status: "Belum", berkas: "", adm: "", kelas: "" },
+            { nama: "ALDIYANSAH PUTRA PRATAMA", status: "Belum", berkas: "", adm: "", kelas: "" },
+            { nama: "ALINDA", status: "Belum", berkas: "", adm: "", kelas: "" },
+            { nama: "ALVIAN MAULANA PALLEVI", status: "Belum", berkas: "", adm: "", kelas: "" },
+            { nama: "ANDHIKA MARVA REY ZEKI", status: "Sudah", berkas: "Fotocopy Ijazah SD/MI", adm: "Lunas", kelas: "IX-B" },
+            { nama: "ANUGRAH SEFTI", status: "Belum", berkas: "", adm: "", kelas: "" },
+            { nama: "DIMAS SAMUDRA", status: "Belum", berkas: "", adm: "", kelas: "" },
+            { nama: "ELISA", status: "Belum", berkas: "", adm: "", kelas: "" },
+            { nama: "ACHSAN FAHRIL ALLAM", status: "Sudah", berkas: "Fotocopy Ijazah SD/MI", adm: "Lunas", kelas: "IX-B" },
+            { nama: "FARAH DHIBA AULIA", status: "Sudah", berkas: "Lengkap", adm: "Lunas", kelas: "IX-B" },
+            { nama: "FRIZHAM AULYA FAHLEVI", status: "Sudah", berkas: "Lengkap", adm: "Lunas", kelas: "IX-B" },
+            { nama: "INTAN PRAMESWARI ALICIA PRIYANDA", status: "Sudah", berkas: "Lengkap", adm: "Lunas", kelas: "IX-B" },
+            { nama: "MOCH. ABID AQILA PRANAJA", status: "Sudah", berkas: "Fotocopy Ijazah SD/MI", adm: "Lunas", kelas: "IX-B" },
+            { nama: "NAJLA KHALISA AZAHRA", status: "Belum", berkas: "", adm: "", kelas: "" },
+            { nama: "NASELA WULANDARI", status: "Sudah", berkas: "Lengkap", adm: "Sudah mengangsur", kelas: "IX-B" },
+            { nama: "RAKA ADITIA PRATAMA", status: "Belum", berkas: "", adm: "", kelas: "" },
+            { nama: "RINA AGUS DEVIA", status: "Sudah", berkas: "Lengkap", adm: "Belum melakukan angsuran", kelas: "Harap menuntaskan daftar ulang dengan batas 16 Juli 2026" },
+            { nama: "ROBI ISMAIL", status: "Belum", berkas: "", adm: "", kelas: "" },
+            { nama: "SATRIYA FEBRIANSA", status: "Belum", berkas: "", adm: "", kelas: "" },
+            { nama: "TANIA AYUNI WIYOTO", status: "Sudah", berkas: "Lengkap", adm: "Sudah mengangsur", kelas: "IX-B" },
+            { nama: "YERVAN ANDRIAN", status: "Sudah", berkas: "Lengkap", adm: "Lunas", kelas: "IX-B" },
+            { nama: "ZIHAN QURROTUL AINI", status: "Sudah", berkas: "Lengkap", adm: "Lunas", kelas: "IX-B" },
+            { nama: "MOCHAMAD IQBALU ZAKI", status: "Sudah", berkas: "Lengkap", adm: "Lunas", kelas: "VII" },
+            { nama: "RAISSA NIKEN WULANDARI", status: "Sudah", berkas: "Lengkap", adm: "Lunas", kelas: "VII" },
+            { nama: "IZZATUN NISAA ROHMANI", status: "Sudah", berkas: "Lengkap", adm: "Lunas", kelas: "VII" },
+            { nama: "MUHAMMAD YOGI SUDARMAJI", status: "Sudah", berkas: "Lengkap", adm: "Lunas", kelas: "VII" },
+            { nama: "ABDUL FAQIH", status: "Sudah", berkas: "Lengkap", adm: "Lunas", kelas: "VII" },
+            { nama: "HAFSY ACHBAR RISKYULLAH", status: "Sudah", berkas: "Lengkap", adm: "Lunas", kelas: "VII" },
+            { nama: "ACH. SOFI", status: "Sudah", berkas: "Lengkap", adm: "Lunas", kelas: "VII" },
+            { nama: "ANUGRAH RAMADHANI", status: "Sudah", berkas: "Lengkap", adm: "Lunas", kelas: "VII" },
+            { nama: "LUTHFIA NA NISAUL JAMILAH", status: "Sudah", berkas: "Lengkap", adm: "Lunas", kelas: "VII" },
+            { nama: "ORNILA KRISTIN AULIA", status: "Sudah", berkas: "Fotocopy Surat Keterangan Lulus", adm: "Sudah mengangsur", kelas: "VII" },
+            { nama: "SITI FADILAH", status: "Sudah", berkas: "Lengkap", adm: "Lunas", kelas: "VII" },
+            { nama: "NUR DWI JAYANTI", status: "Sudah", berkas: "Lengkap", adm: "Lunas", kelas: "VII" },
+            { nama: "AYU DEWI SANDRA", status: "Sudah", berkas: "Lengkap", adm: "Lunas", kelas: "VII" },
+            { nama: "JAFAR SHODIQ", status: "Sudah", berkas: "Lengkap", adm: "Lunas", kelas: "VII" },
+            { nama: "MOCH. UBAYDILLAH", status: "Sudah", berkas: "Lengkap", adm: "Lunas", kelas: "VII" },
+            { nama: "MOCH. IQBAL KURNIAWAN", status: "Sudah", berkas: "Lengkap", adm: "Lunas", kelas: "VII" },
+            { nama: "RASYA ANGGARA PUTRA", status: "Sudah", berkas: "Lengkap", adm: "Lunas", kelas: "VII" },
+            { nama: "ANANDA AFRIZAL NURAINI", status: "Sudah", berkas: "Lengkap", adm: "Lunas", kelas: "VII" },
+            { nama: "MOCH. ALI WAFA IBNU HALIL", status: "Sudah", berkas: "Lengkap", adm: "Lunas", kelas: "VII" },
+            { nama: "RIZKI MAULANA", status: "Sudah", berkas: "Lengkap", adm: "Lunas", kelas: "VII" },
+            { nama: "ATIQA FAIRUZ KHALISA", status: "Sudah", berkas: "Lengkap", adm: "Lunas", kelas: "VII" },
+            { nama: "BUNGA ANTIKA", status: "Sudah", berkas: "Lengkap", adm: "Sudah mengangsur", kelas: "VII" },
+            { nama: "THALITA EL VESA ASALIA HIKARI", status: "Sudah", berkas: "Lengkap", adm: "Lunas", kelas: "VII" },
+            { nama: "GILANG SATRIA MAHARDIKA", status: "Sudah", berkas: "Lengkap", adm: "Lunas", kelas: "VII" },
+            { nama: "MIKAIL KENZIE ALMALIKI", status: "Sudah", berkas: "Lengkap", adm: "Lunas", kelas: "VII" },
+            { nama: "NABILATU LAISA KAMIS LIHI", status: "Sudah", berkas: "Lengkap", adm: "Lunas", kelas: "VII" },
+            { nama: "RONALDOWATI", status: "Belum", berkas: "", adm: "", kelas: "" }
         ];
 
-        // WA CONFIGURATION
-        const waAdminNumber = "6282337254978";
-
-        // INIT ON LOAD
-        window.onload = function() {
-            renderKelasReguler();
-            renderKelasBtq();
-            initDropdownSiswa();
-            switchTab('tab-kelas-sekolah'); // default tab
+        // Database BTQ (Keep level list intact)
+        const dataBtq = {
+            btq1: Array.from({length: 40}, (_, i) => `Siswa ${i + 1}`),
+            btq2: Array.from({length: 40}, (_, i) => `Murid ${i + 1}`),
+            btq3: Array.from({length: 40}, (_, i) => `Student ${i + 1}`)
         };
 
-        // SWITCH TAB LOGIC
+        const waAdminNumber = "6282337254978";
+
+        window.onload = function() {
+            // Sort database alphabetically by name
+            databaseSiswa.sort((a, b) => a.nama.localeCompare(b.nama));
+            
+            // Render default UI
+            renderBTQ();
+            populateSearchList(databaseSiswa);
+            switchTab('tab-cek-pembagian');
+
+            // Close dropdown if user clicks outside
+            document.addEventListener('click', function(e) {
+                const searchBox = document.getElementById('search-siswa-input');
+                const dropList = document.getElementById('siswa-dropdown-list');
+                if (e.target !== searchBox && !dropList.contains(e.target)) {
+                    dropList.classList.add('hidden');
+                }
+            });
+        };
+
+        // Tab Switch Logic
         function switchTab(tabId) {
-            // Hide all tab content
             document.querySelectorAll('.tab-content').forEach(content => {
                 content.classList.add('hidden');
             });
-            // Show active tab
             document.getElementById(tabId).classList.remove('hidden');
 
-            // Set active class to navigation buttons
             document.querySelectorAll('.tab-btn').forEach(btn => {
                 btn.classList.remove('active-tab');
             });
             document.getElementById('btn-' + tabId).classList.add('active-tab');
         }
 
-        // RENDER KELAS REGULER
-        function renderKelasReguler() {
-            // VII
-            renderList('list-kelas-vii', dataSiswa.vii.list);
-            
-            // VIII-A (Capacity 21)
-            renderListWithCapacity('list-kelas-viii-a', dataSiswa.viiiA.list, dataSiswa.viiiA.totalCapacity);
-
-            // VIII-B (Capacity 21)
-            renderListWithCapacity('list-kelas-viii-b', dataSiswa.viiiB.list, dataSiswa.viiiB.totalCapacity);
-
-            // IX-A (Capacity 20)
-            renderListWithCapacity('list-kelas-ix-a', dataSiswa.ixA.list, dataSiswa.ixA.totalCapacity);
-
-            // IX-B (Capacity 21)
-            renderListWithCapacity('list-kelas-ix-b', dataSiswa.ixB.list, dataSiswa.ixB.totalCapacity);
+        // BTQ Renderer
+        function renderBTQ() {
+            renderList('list-btq-1', dataBtq.btq1, 'cyan');
+            renderList('list-btq-2', dataBtq.btq2, 'indigo');
+            renderList('list-btq-3', dataBtq.btq3, 'violet');
         }
 
-        // RENDER KELAS BTQ
-        function renderKelasBtq() {
-            renderList('list-btq-1', dataBtq.btq1.list);
-            renderList('list-btq-2', dataBtq.btq2.list);
-            renderList('list-btq-3', dataBtq.btq3.list);
-        }
-
-        // HELPER RENDER (NORMAL)
-        function renderList(elementId, items) {
+        function renderList(elementId, items, themeColor) {
             const container = document.getElementById(elementId);
             container.innerHTML = '';
             items.forEach((item, index) => {
@@ -881,115 +700,258 @@
             });
         }
 
-        // HELPER RENDER (WITH CAPACITY - FILLING EMPTY NAMES WITH BLANK SPACE)
-        function renderListWithCapacity(elementId, items, totalCapacity) {
-            const container = document.getElementById(elementId);
-            container.innerHTML = '';
-            for (let i = 0; i < totalCapacity; i++) {
-                const item = items[i] || ""; // if undefined, output empty string
-                const itemEl = document.createElement('div');
-                itemEl.className = "py-2 px-3 flex items-center justify-between text-sm hover:bg-slate-50 rounded transition";
-                
-                if (item !== "") {
-                    itemEl.innerHTML = `
-                        <div class="flex items-center gap-2">
-                            <span class="w-6 h-6 bg-slate-100 text-slate-500 rounded-full flex items-center justify-center font-bold text-xs">${i + 1}</span>
-                            <span class="font-semibold text-slate-700 uppercase">${item}</span>
-                        </div>
-                        <i class="fa-solid fa-circle-check text-emerald-400 text-xs"></i>
-                    `;
-                } else {
-                    itemEl.innerHTML = `
-                        <div class="flex items-center gap-2 text-slate-400 italic">
-                            <span class="w-6 h-6 bg-slate-50 text-slate-400 rounded-full flex items-center justify-center font-bold text-xs">${i + 1}</span>
-                            <span>[Belum Terisi]</span>
-                        </div>
-                        <span class="text-[10px] text-slate-300">Kosong</span>
-                    `;
-                }
-                container.appendChild(itemEl);
-            }
-        }
+        // Dropdown populator (Strictly names only - no classes/status label)
+        function populateSearchList(list) {
+            const dropdown = document.getElementById('siswa-dropdown-list');
+            dropdown.innerHTML = '';
 
-        // FILTER REGULER CARDS
-        function filterKelasReguler(classKey) {
-            // Update filter button styles
-            const buttons = document.querySelectorAll('#kelas-sub-tabs button');
-            buttons.forEach(btn => {
-                if (btn.getAttribute('data-target') === classKey) {
-                    btn.className = "sub-filter-btn px-4 py-2 rounded-lg text-xs font-bold bg-brand-600 text-white shadow-sm";
-                } else {
-                    btn.className = "sub-filter-btn px-4 py-2 rounded-lg text-xs font-bold bg-white text-slate-600 border border-slate-100 hover:bg-slate-50";
-                }
-            });
-
-            // Hide or Show Cards
-            const cards = document.querySelectorAll('.card-kelas');
-            cards.forEach(card => {
-                if (classKey === 'all') {
-                    card.style.display = 'block';
-                } else {
-                    if (card.getAttribute('data-kelas') === classKey) {
-                        card.style.display = 'block';
-                    } else {
-                        card.style.display = 'none';
-                    }
-                }
-            });
-        }
-
-        // INITIALIZE DROPDOWN LIST SISWA BERMASALAH
-        function initDropdownSiswa() {
-            const select = document.getElementById('pilih-siswa');
-            listSiswaBermasalah.forEach(siswa => {
-                const opt = document.createElement('option');
-                opt.value = siswa.nama;
-                opt.textContent = siswa.nama;
-                select.appendChild(opt);
-            });
-        }
-
-        // INTERACTIVE DETAILED DROPDOWN CHANGED
-        function tampilkanKeteranganSiswa() {
-            const select = document.getElementById('pilih-siswa');
-            const box = document.getElementById('box-keterangan-daftarulang');
-            
-            if (select.value === "") {
-                box.classList.add('hidden');
+            if (list.length === 0) {
+                dropdown.innerHTML = `<div class="p-4 text-sm text-slate-400 text-center italic">Tidak menemukan kecocokan nama...</div>`;
                 return;
             }
 
-            const siswaObj = listSiswaBermasalah.find(s => s.nama === select.value);
-            if (siswaObj) {
-                document.getElementById('detail-nama-siswa').textContent = siswaObj.nama;
+            list.forEach(siswa => {
+                const item = document.createElement('div');
+                item.className = "p-3.5 hover:bg-emerald-50 text-slate-700 font-semibold text-sm cursor-pointer border-b border-slate-50 transition flex justify-between items-center";
                 
-                // Render List Alasan
-                const listContainer = document.getElementById('detail-alasan-list');
-                listContainer.innerHTML = '';
-                siswaObj.alasan.forEach(als => {
-                    const li = document.createElement('li');
-                    li.className = "flex items-start gap-3 text-sm text-slate-700 font-medium";
-                    li.innerHTML = `
-                        <i class="fa-solid fa-circle-xmark text-rose-500 text-base mt-0.5"></i>
-                        <span>${als}</span>
-                    `;
-                    listContainer.appendChild(li);
-                });
+                // Set only the text content as name, completely empty of other tags/classes
+                item.innerHTML = `<span>${siswa.nama}</span>`;
+                
+                item.onclick = function() {
+                    document.getElementById('search-siswa-input').value = siswa.nama;
+                    dropdown.classList.add('hidden');
+                    pilihSiswa(siswa);
+                };
+                dropdown.appendChild(item);
+            });
+        }
 
-                // Render Solusi/Tindakan
-                document.getElementById('detail-pesan-tindakan').innerHTML = `
-                    <p class="font-bold text-amber-900 mb-1"><i class="fa-solid fa-circle-info"></i> Tindakan Yang Diperlukan:</p>
-                    <p>${siswaObj.solusi}</p>
+        function showDropdown() {
+            const dropdown = document.getElementById('siswa-dropdown-list');
+            dropdown.classList.remove('hidden');
+            filterSiswa();
+        }
+
+        function filterSiswa() {
+            const query = document.getElementById('search-siswa-input').value.toUpperCase();
+            const filtered = databaseSiswa.filter(s => s.nama.includes(query));
+            populateSearchList(filtered);
+        }
+
+        // Display Details based on Category
+        function pilihSiswa(siswa) {
+            const resultBox = document.getElementById('box-hasil-pembagian');
+            resultBox.innerHTML = '';
+
+            let cardContent = '';
+
+            // CATEGORY 1: BLUE (BELUM AMBIL RAPOR - Ditangguhkan dari UPDATE DATA SISWA (Pembagian Kelas).xlsx)
+            if (siswa.status.includes("Tidak dapat") || siswa.nama === "MOCH. RIZKI ROMADHON") {
+                const isRizkiOnly = (siswa.nama === "MOCH. RIZKI ROMADHON");
+                const reasons = isRizkiOnly 
+                    ? `<li><i class="fa-solid fa-xmark text-rose-500"></i> Belum melakukan pengambilan rapor kelas 7 semester genap 2025-2026</li>`
+                    : `<li><i class="fa-solid fa-xmark text-rose-500"></i> Belum menyelesaikan administrasi pendidikan kelas 7 semester genap 2025-2026</li>
+                       <li><i class="fa-solid fa-xmark text-rose-500"></i> Belum melaksanakan ujian SAT (Sumatif Akhir Tahun)</li>
+                       <li><i class="fa-solid fa-xmark text-rose-500"></i> Belum melakukan pengambilan rapor kelas 7 semester genap 2025-2026</li>`;
+
+                cardContent = `
+                    <div class="p-1 rounded-3xl bg-gradient-to-br from-sky-500 to-blue-600 shadow-lg shadow-blue-500/10">
+                        <div class="bg-sky-50/95 backdrop-blur rounded-[22px] p-6 sm:p-8">
+                            <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-sky-100 pb-5">
+                                <div>
+                                    <span class="bg-sky-200 text-sky-800 text-xs font-extrabold px-3 py-1 rounded-full uppercase tracking-wider">Status: Ditangguhkan</span>
+                                    <h4 class="font-display font-black text-2xl text-blue-900 mt-2">${siswa.nama}</h4>
+                                </div>
+                                <div class="bg-sky-200 text-sky-800 text-center font-bold px-4 py-3 rounded-2xl shrink-0 w-full sm:w-auto">
+                                    <span class="block text-xs uppercase tracking-widest font-black opacity-80">Kelas</span>
+                                    <span class="text-lg font-black">Belum Ditentukan</span>
+                                </div>
+                            </div>
+
+                            <div class="mt-6 space-y-4">
+                                <div>
+                                    <h5 class="text-xs font-bold text-sky-800 uppercase tracking-wider flex items-center gap-1.5 mb-2">
+                                        <i class="fa-solid fa-triangle-exclamation"></i> Keterangan Kendala
+                                    </h5>
+                                    <ul class="text-sm font-semibold text-slate-700 bg-white/70 border border-sky-100 p-4 rounded-xl leading-relaxed space-y-2">
+                                        ${reasons}
+                                    </ul>
+                                </div>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                    <div class="bg-white/60 p-4 rounded-xl border border-sky-100/50">
+                                        <span class="block text-[11px] text-sky-800 uppercase font-bold">Berkas Daftar Ulang</span>
+                                        <span class="text-slate-500 text-sm font-semibold italic">Belum dapat diproses</span>
+                                    </div>
+                                    <div class="bg-white/60 p-4 rounded-xl border border-sky-100/50">
+                                        <span class="block text-[11px] text-sky-800 uppercase font-bold">Administrasi Pendidikan</span>
+                                        <span class="text-slate-500 text-sm font-semibold italic">Belum dapat divalidasi</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mt-8 bg-sky-200/50 p-4 rounded-2xl text-sky-950 text-xs leading-relaxed border border-sky-200">
+                                <p class="font-bold mb-1"><i class="fa-solid fa-bell"></i> Tindakan Wali Murid:</p>
+                                <p>Harap segera mendatangi madrasah untuk menunaikan kewajiban-kewajiban di atas sebelum memproses daftar ulang harian. Anda bisa menghubungi admin madrasah dengan menekan tombol hijau di bawah ini.</p>
+                            </div>
+
+                            <div class="mt-6">
+                                <a href="https://wa.me/${waAdminNumber}?text=${encodeURIComponent('Halo Admin MTs. Muhajirin, Saya ingin berkoordinasi tentang kelengkapan rapor dan daftar ulang atas nama siswa: ' + siswa.nama + '.')}" target="_blank" class="w-full inline-flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20ba56] text-white font-bold py-4 px-6 rounded-2xl transition duration-300 shadow-md">
+                                    <i class="fa-brands fa-whatsapp text-lg"></i> Hubungi Admin Terkait Pengambilan Rapor
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 `;
-
-                // Update WhatsApp Link
-                const waMessage = `Halo Admin MTs. Muhajirin Surabaya, Saya ingin mengonfirmasi dan menanyakan perihal kelengkapan daftar ulang atas nama siswa: ${siswaObj.nama}. Terima kasih.`;
-                const encodedMessage = encodeURIComponent(waMessage);
-                document.getElementById('btn-wa-admin').href = `https://wa.me/${waAdminNumber}?text=${encodedMessage}`;
-
-                // Show box
-                box.classList.remove('hidden');
             }
+            // CATEGORY 2: AMBER (SUDAH DAFTAR ULANG - TAPI BERSYARAT/KURANG BERKAS)
+            else if (siswa.status === "Sudah" && siswa.kelas.includes("Harap")) {
+                cardContent = `
+                    <div class="p-1 rounded-3xl bg-gradient-to-br from-amber-500 to-orange-500 shadow-lg shadow-amber-500/10">
+                        <div class="bg-amber-50/95 backdrop-blur rounded-[22px] p-6 sm:p-8">
+                            <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-amber-100 pb-5">
+                                <div>
+                                    <span class="bg-amber-200 text-amber-800 text-xs font-extrabold px-3 py-1 rounded-full uppercase tracking-wider">Status: Sudah (Belum Lengkap)</span>
+                                    <h4 class="font-display font-black text-2xl text-amber-950 mt-2">${siswa.nama}</h4>
+                                </div>
+                                <div class="bg-amber-200 text-amber-800 text-center font-bold px-4 py-3 rounded-2xl shrink-0 w-full sm:w-auto">
+                                    <span class="block text-xs uppercase tracking-widest font-black opacity-80">Kelas</span>
+                                    <span class="text-sm font-black text-amber-900 leading-tight block">Menunggu Kelengkapan</span>
+                                </div>
+                            </div>
+
+                            <div class="mt-6 space-y-4">
+                                <div>
+                                    <h5 class="text-xs font-bold text-amber-800 uppercase tracking-wider flex items-center gap-1.5 mb-1">
+                                        <i class="fa-solid fa-file-shield"></i> Kelengkapan Berkas Daftar Ulang
+                                    </h5>
+                                    <p class="text-sm font-bold text-slate-700 bg-white/70 border border-amber-100 p-3.5 rounded-xl">
+                                        ${siswa.berkas}
+                                    </p>
+                                </div>
+                                <div>
+                                    <h5 class="text-xs font-bold text-amber-800 uppercase tracking-wider flex items-center gap-1.5 mb-1">
+                                        <i class="fa-solid fa-credit-card"></i> Status Administrasi
+                                    </h5>
+                                    <p class="text-sm font-bold text-slate-700 bg-white/70 border border-amber-100 p-3.5 rounded-xl">
+                                        ${siswa.adm}
+                                    </p>
+                                </div>
+                                <div>
+                                    <h5 class="text-xs font-bold text-rose-800 uppercase tracking-wider flex items-center gap-1.5 mb-1">
+                                        <i class="fa-solid fa-circle-exclamation animate-pulse"></i> Penempatan Kelas
+                                    </h5>
+                                    <p class="text-sm font-bold text-rose-700 bg-rose-50 border border-rose-100 p-3.5 rounded-xl">
+                                        ${siswa.kelas}
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="mt-8 bg-amber-200/50 p-4 rounded-2xl text-amber-950 text-xs leading-relaxed border border-amber-200">
+                                <p class="font-bold mb-1"><i class="fa-solid fa-bell"></i> Batas Akhir Penuntasan:</p>
+                                <p>Siswa sudah terdaftar namun penempatan ruang kelas definitif masih ditunda karena berkas/administrasi belum lengkap. Harap segera melunasi / mengumpulkan berkas ke Bendahara Sekolah sebelum batas 16 Juli 2026.</p>
+                            </div>
+
+                            <div class="mt-6">
+                                <a href="https://wa.me/${waAdminNumber}?text=${encodeURIComponent('Halo Admin MTs. Muhajirin, Saya ingin berkoordinasi tentang pelunasan/kelengkapan berkas (' + siswa.berkas + ') atas nama siswa: ' + siswa.nama + '.')}" target="_blank" class="w-full inline-flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20ba56] text-white font-bold py-4 px-6 rounded-2xl transition duration-300 shadow-md">
+                                    <i class="fa-brands fa-whatsapp text-lg"></i> Hubungi Admin & Bendahara Sekolah
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }
+            // CATEGORY 3: EMERALD (SUDAH DAFTAR ULANG & AMAN)
+            else if (siswa.status === "Sudah") {
+                cardContent = `
+                    <div class="p-1 rounded-3xl bg-gradient-to-br from-emerald-500 to-teal-600 shadow-lg shadow-emerald-500/10">
+                        <div class="bg-emerald-50/95 backdrop-blur rounded-[22px] p-6 sm:p-8">
+                            <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-emerald-100 pb-5">
+                                <div>
+                                    <span class="bg-emerald-200 text-emerald-800 text-xs font-extrabold px-3 py-1 rounded-full uppercase tracking-wider">Status: Sudah Daftar Ulang</span>
+                                    <h4 class="font-display font-black text-2xl text-emerald-950 mt-2">${siswa.nama}</h4>
+                                </div>
+                                <div class="bg-emerald-500 text-white text-center font-bold px-6 py-3 rounded-2xl shrink-0 w-full sm:w-auto shadow-inner">
+                                    <span class="block text-xs uppercase tracking-widest font-black opacity-80">Masuk Kelas</span>
+                                    <span class="text-3xl font-black">${siswa.kelas}</span>
+                                </div>
+                            </div>
+
+                            <div class="mt-6 space-y-4">
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                    <div class="bg-white/80 p-4 rounded-xl border border-emerald-100">
+                                        <span class="block text-[11px] text-emerald-800 uppercase font-bold mb-1">Kelengkapan Berkas</span>
+                                        <span class="text-slate-700 text-sm font-bold flex items-center gap-1.5 text-emerald-600">
+                                            <i class="fa-solid fa-circle-check"></i> ${siswa.berkas}
+                                        </span>
+                                    </div>
+                                    <div class="bg-white/80 p-4 rounded-xl border border-emerald-100">
+                                        <span class="block text-[11px] text-emerald-800 uppercase font-bold mb-1">Administrasi Pendidikan</span>
+                                        <span class="text-slate-700 text-sm font-bold flex items-center gap-1.5 text-emerald-600">
+                                            <i class="fa-solid fa-circle-check"></i> ${siswa.adm}
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mt-8 bg-emerald-100/50 p-4 rounded-2xl text-emerald-950 text-xs leading-relaxed border border-emerald-200">
+                                <p class="font-bold mb-1"><i class="fa-solid fa-circle-check"></i> Selamat!</p>
+                                <p>Seluruh berkas pendaftaran ulang dan biaya administrasi putra/putri Anda telah diterima dengan lengkap dan lunas. Putra/putri Anda resmi ditempatkan di <strong>Kelas ${siswa.kelas}</strong>.</p>
+                            </div>
+
+                            <div class="mt-6 flex flex-col sm:flex-row gap-3">
+                                <div class="flex-1 text-center bg-emerald-100/30 text-emerald-800 font-bold py-4 px-6 rounded-2xl border border-emerald-100 text-sm">
+                                    Siswa Siap Mengikuti KBM Efektif
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }
+            // CATEGORY 4: RED/ROSE (BELUM DAFTAR ULANG)
+            else {
+                const limitDate = (siswa.nama === "RONALDOWATI") ? "15 Juli 2026" : "15 Juli 2026";
+                cardContent = `
+                    <div class="p-1 rounded-3xl bg-gradient-to-br from-rose-500 to-red-600 shadow-lg shadow-rose-500/10">
+                        <div class="bg-rose-50/95 backdrop-blur rounded-[22px] p-6 sm:p-8">
+                            <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-rose-100 pb-5">
+                                <div>
+                                    <span class="bg-rose-200 text-rose-800 text-xs font-extrabold px-3 py-1 rounded-full uppercase tracking-wider">Status: Belum Daftar Ulang</span>
+                                    <h4 class="font-display font-black text-2xl text-rose-950 mt-2">${siswa.nama}</h4>
+                                </div>
+                                <div class="bg-rose-200 text-rose-800 text-center font-bold px-4 py-3 rounded-2xl shrink-0 w-full sm:w-auto">
+                                    <span class="block text-xs uppercase tracking-widest font-black opacity-80">Kelas</span>
+                                    <span class="text-sm font-black text-rose-900 leading-tight block">Belum Terbagi</span>
+                                </div>
+                            </div>
+
+                            <div class="mt-6 space-y-4">
+                                <div class="bg-white/80 p-5 rounded-2xl border border-rose-100">
+                                    <h5 class="text-xs font-bold text-rose-800 uppercase tracking-wider flex items-center gap-1.5 mb-2">
+                                        <i class="fa-solid fa-triangle-exclamation"></i> Keterangan Status
+                                    </h5>
+                                    <p class="text-sm font-semibold text-slate-700 leading-relaxed">
+                                        Siswa yang bersangkutan belum terdaftar ulang untuk semester ini. Harap segera mendaftar ulang agar berhak mendapatkan penempatan kelas harian dan mengikuti KBM.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="mt-8 bg-rose-200/50 p-4 rounded-2xl text-rose-950 text-xs leading-relaxed border border-rose-200">
+                                <p class="font-bold mb-1"><i class="fa-solid fa-hourglass-half"></i> Batas Akhir Daftar Ulang:</p>
+                                <p>Harap segera melakukan daftar ulang paling lambat tanggal <strong>${limitDate}</strong>. Anda dapat mengunjungi Bendahara Sekolah atau menghubungi Admin di bawah.</p>
+                            </div>
+
+                            <div class="mt-6">
+                                <a href="https://wa.me/${waAdminNumber}?text=${encodeURIComponent('Halo Admin MTs. Muhajirin, Saya wali murid dari ' + siswa.nama + ' ingin menanyakan informasi tentang prosedur dan administrasi pendaftaran ulang siswa baru.')}" target="_blank" class="w-full inline-flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20ba56] text-white font-bold py-4 px-6 rounded-2xl transition duration-300 shadow-md">
+                                    <i class="fa-brands fa-whatsapp text-lg"></i> Hubungi Admin & Daftar Sekarang
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }
+
+            resultBox.innerHTML = cardContent;
+            resultBox.classList.remove('hidden');
         }
     </script>
 </body>
